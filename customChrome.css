@@ -1,0 +1,77 @@
+/* ==========================================================================
+   Zen GNOME Theme - Metro Dark & Transparency Overrides
+   ========================================================================== */
+
+:root {
+  /* Metro Dark Palette */
+  --gnome-window-background: #101010 !important;
+  --gnome-view-background: #141414 !important;
+  --gnome-sidebar-background: transparent !important;
+  --gnome-secondary-sidebar-background: transparent !important;
+  --gnome-headerbar-background: #161616 !important;
+  --gnome-menu-background: #1a1a1a !important;
+  --gnome-card-background: rgba(255, 255, 255, 0.05) !important;
+  --gnome-card-shade-color: rgba(0, 0, 0, 0.6) !important;
+  --gnome-hover-color: rgba(255, 255, 255, 0.08) !important;
+  --gnome-active-color: rgba(255, 255, 255, 0.14) !important;
+  --gnome-selected-color: rgba(0, 120, 215, 0.35) !important;
+  --gnome-selected-hover-color: rgba(0, 120, 215, 0.45) !important;
+  --gnome-selected-active-color: rgba(0, 120, 215, 0.55) !important;
+  --gnome-accent-bg: #0078d7 !important;
+  --gnome-border-color: rgba(255, 255, 255, 0.08) !important;
+  --gnome-toolbar-icon-fill: #f0f0f0 !important;
+
+  /* Zen color variable overrides */
+  --zen-colors-primary: #161616 !important;
+  --zen-colors-secondary: transparent !important;
+  --zen-colors-tertiary: #141414 !important;
+}
+
+/* 1. Restore Sidebar Transparency */
+.zen-browser-generic-background {
+  --zen-main-browser-background: transparent !important;
+  --zen-main-browser-background-toolbar: transparent !important;
+  background-color: transparent !important;
+}
+
+.zen-browser-generic-background::before,
+.zen-browser-generic-background::after {
+  opacity: 0.15 !important;
+}
+
+#navigator-toolbox {
+  background-color: transparent !important;
+}
+
+#titlebar {
+  background-color: transparent !important;
+}
+
+#zen-toolbar-background {
+  background-color: color-mix(in srgb, #101010 40%, transparent) !important;
+  backdrop-filter: blur(24px) !important;
+}
+
+/* 2. Toolbar & URL Bar Metro Dark Style */
+#nav-bar {
+  background-color: color-mix(in srgb, #141414 85%, transparent) !important;
+}
+
+#urlbar-background {
+  background-color: #1a1a1a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 3. Tab highlights in Metro style */
+.tabbrowser-tab .tab-background {
+  border-radius: 6px !important;
+}
+
+.tabbrowser-tab[visuallyselected] .tab-background {
+  background-color: rgba(255, 255, 255, 0.09) !important;
+  border-left: 3px solid #0078d7 !important;
+}
+
+.tabbrowser-tab:hover:not([visuallyselected]) .tab-background {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
