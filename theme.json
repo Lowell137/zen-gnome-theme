@@ -1,0 +1,15 @@
+{
+  "id": "zen-gnome-theme",
+  "name": "Zen GNOME Theme",
+  "description": "A GNOME theme for Zen Browser inspired by Adwaita.",
+  "homepage": "https://github.com/Lowell137/zen-gnome-theme",
+  "author": "ClixTW",
+  "version": "1.0.0",
+  "createdAt": "2026-10-07",
+  "updatedAt": "2026-10-07",
+  "style": {
+    "chrome": "userChrome.css"
+  },
+  "tags": ["gnome", "adwaita", "theme", "linux"],
+  "fork": ["zen"]
+}
