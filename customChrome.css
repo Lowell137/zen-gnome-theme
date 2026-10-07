@@ -9,30 +9,37 @@
   --gnome-sidebar-background: transparent !important;
   --gnome-secondary-sidebar-background: transparent !important;
   --gnome-headerbar-background: #161616 !important;
-  --gnome-menu-background: #181818 !important;
-  --gnome-card-background: rgba(255, 255, 255, 0.04) !important;
+  --gnome-menu-background: #1a1a1a !important;
+  --gnome-card-background: rgba(255, 255, 255, 0.05) !important;
   --gnome-card-shade-color: rgba(0, 0, 0, 0.6) !important;
+
+  /* Metro Cobalt Accent */
+  --metro-accent: #0078d7;
+  --metro-accent-border: rgba(0, 120, 215, 0.7);
+  --metro-accent-bg: rgba(0, 120, 215, 0.18);
+  --metro-accent-glow: rgba(0, 120, 215, 0.25);
+
+  /* Interaction states */
+  --gnome-hover-color: rgba(255, 255, 255, 0.07) !important;
+  --gnome-active-color: rgba(255, 255, 255, 0.12) !important;
+  --gnome-selected-color: var(--metro-accent-bg) !important;
+  --gnome-selected-hover-color: rgba(0, 120, 215, 0.25) !important;
+  --gnome-selected-active-color: rgba(0, 120, 215, 0.35) !important;
   
-  /* Interaction states (subtle white tints) */
-  --gnome-hover-color: rgba(255, 255, 255, 0.06) !important;
-  --gnome-active-color: rgba(255, 255, 255, 0.10) !important;
-  --gnome-selected-color: rgba(255, 255, 255, 0.07) !important;
-  --gnome-selected-hover-color: rgba(255, 255, 255, 0.10) !important;
-  --gnome-selected-active-color: rgba(255, 255, 255, 0.14) !important;
-  
-  --gnome-border-color: rgba(255, 255, 255, 0.08) !important;
-  --gnome-toolbar-icon-fill: #e6e6e6 !important;
+  --gnome-border-color: rgba(255, 255, 255, 0.1) !important;
+  --gnome-toolbar-icon-fill: #f0f0f0 !important;
+  --gnome-accent-bg: var(--metro-accent) !important;
 
   /* Zen color overrides */
   --zen-colors-primary: #161616 !important;
   --zen-colors-secondary: transparent !important;
   --zen-colors-tertiary: #141414 !important;
-  --zen-toolbar-element-bg: transparent !important;
-  --tab-background-color-selected: rgba(255, 255, 255, 0.08) !important;
+  --zen-toolbar-element-bg: rgba(255, 255, 255, 0.06) !important;
+  --tab-background-color-selected: var(--metro-accent-bg) !important;
   --urlbar-box-background-color: transparent !important;
 }
 
-/* 1. Restore Sidebar Transparency */
+/* 1. Sidebar Transparency */
 .zen-browser-generic-background {
   --zen-main-browser-background: transparent !important;
   --zen-main-browser-background-toolbar: transparent !important;
@@ -41,7 +48,7 @@
 
 .zen-browser-generic-background::before,
 .zen-browser-generic-background::after {
-  opacity: 0.12 !important;
+  opacity: 0.15 !important;
 }
 
 #navigator-toolbox {
@@ -53,35 +60,25 @@
 }
 
 #zen-toolbar-background {
-  background-color: color-mix(in srgb, #101010 30%, transparent) !important;
+  background-color: color-mix(in srgb, #101010 35%, transparent) !important;
   backdrop-filter: blur(24px) !important;
 }
 
-/* 2. URL Bar & Search Popup: Clean neutral dark, NO blue border or glow */
-#urlbar-background,
-.urlbar-background,
-#urlbar[breakout-extend] .urlbar-background,
-#urlbar[breakout-extend] #urlbar-background {
-  background-color: #161616 !important;
+/* 2. Sidebar URL Bar: Defined Metro outline with blue accent */
+#urlbar:not([breakout-extend]) #urlbar-background,
+#urlbar:not([breakout-extend]) .urlbar-background {
+  background-color: rgba(20, 20, 20, 0.75) !important;
   border-radius: 9px !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
-  outline: none !important;
+  border: 1.5px solid var(--metro-accent-border) !important;
+  box-shadow: 0 0 6px var(--metro-accent-glow) !important;
+  transition: all 0.15s ease !important;
 }
 
 #urlbar:not([breakout-extend]):hover #urlbar-background,
 #urlbar:not([breakout-extend]):hover .urlbar-background {
-  background-color: #1a1a1a !important;
-  border-color: rgba(255, 255, 255, 0.16) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
-}
-
-#urlbar[focused="true"] #urlbar-background,
-#urlbar[breakout-extend] .urlbar-background,
-#urlbar[breakout-extend] #urlbar-background {
-  background-color: #161616 !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+  background-color: rgba(26, 26, 26, 0.85) !important;
+  border-color: var(--metro-accent) !important;
+  box-shadow: 0 0 10px rgba(0, 120, 215, 0.4) !important;
 }
 
 #urlbar .urlbar-input-container {
@@ -92,53 +89,72 @@
 #urlbar-input {
   background-color: transparent !important;
   color: #ffffff !important;
+  font-weight: 500 !important;
 }
 
-/* 3. Pinned / Essentials: Subtle bordered cards, NO solid blue */
+/* 3. Search Popup (breakout-extend): Clean neutral dark, NO blue border or glow */
+#urlbar[breakout-extend] #urlbar-background,
+#urlbar[breakout-extend] .urlbar-background {
+  background-color: #161616 !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7) !important;
+  outline: none !important;
+}
+
+#urlbar[breakout-extend] .urlbar-input-container {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* 4. Pinned / Essentials Cards in Sidebar: Defined Metro cards */
 #zen-essentials .tab-icon-overlay,
 #zen-essentials .tabbrowser-tab .tab-icon-overlay {
   background-color: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  border-radius: 9px !important;
+  transition: all 0.15s ease !important;
 }
 
 #zen-essentials .tab-icon-overlay:hover,
 #zen-essentials .tabbrowser-tab .tab-icon-overlay:hover {
-  background-color: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
+  background-color: var(--metro-accent-bg) !important;
+  border-color: var(--metro-accent-border) !important;
 }
 
 #zen-essentials .tabbrowser-tab[visuallyselected] .tab-background,
 #zen-essentials .tabbrowser-tab[visuallyselected] .tab-icon-overlay {
-  background-color: rgba(255, 255, 255, 0.09) !important;
-  border-color: rgba(255, 255, 255, 0.18) !important;
+  background-color: var(--metro-accent-bg) !important;
+  border: 1.5px solid var(--metro-accent) !important;
 }
 
-/* 4. Sidebar extension buttons */
+/* 5. Sidebar Action & Extension Buttons */
 #navigator-toolbox .toolbarbutton-1,
 #zen-sidebar-top-buttons .toolbarbutton-1 {
-  border-radius: 7px !important;
+  border-radius: 8px !important;
   border: 1px solid transparent !important;
+  transition: all 0.15s ease !important;
 }
 
 #navigator-toolbox .toolbarbutton-1:hover,
 #zen-sidebar-top-buttons .toolbarbutton-1:hover {
-  background-color: rgba(255, 255, 255, 0.06) !important;
+  background-color: rgba(255, 255, 255, 0.07) !important;
   border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
-/* 5. Tab selection: Dark card */
+/* 6. Tab List: Defined dark cards with Metro accent selection */
 .tabbrowser-tab .tab-background {
-  border-radius: 7px !important;
+  border-radius: 8px !important;
   border: 1px solid transparent !important;
+  transition: all 0.15s ease !important;
 }
 
 .tabbrowser-tab[visuallyselected] .tab-background {
-  background-color: rgba(255, 255, 255, 0.07) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid var(--metro-accent-border) !important;
+  box-shadow: inset 3px 0 0 var(--metro-accent) !important;
 }
 
 .tabbrowser-tab:hover:not([visuallyselected]) .tab-background {
-  background-color: rgba(255, 255, 255, 0.04) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
   border-color: rgba(255, 255, 255, 0.08) !important;
 }
